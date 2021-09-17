@@ -4,9 +4,9 @@ import axios from 'axios'
 // create projects request
 export const createProject = (data, user) => {
   return axios({
-    url: apiUrl + '/projects',
+    url: apiUrl + '/create-projects',
     method: 'post',
-    data: { projects: data },
+    data: data,
     headers: {
       Authorization: `Bearer ${user.token}`
     }
@@ -14,7 +14,7 @@ export const createProject = (data, user) => {
 }
 
 // index of all projects
-export const indexProject = (user) => {
+export const indexProjects = (user) => {
   return axios({
     url: apiUrl + '/projects',
     method: 'get',

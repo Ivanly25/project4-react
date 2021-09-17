@@ -11,22 +11,27 @@ class CreateProject extends Component {
   constructor (props) {
     super(props)
     this.state = {
-    // project: {
-      projectName: '',
-      shortDescription: '',
-      toolsUsed: '',
-      laborTime: '',
-      done: false,
-      payer: '',
-      owner: ''
-      // }
+      project: {
+        projectName: '',
+        shortDescription: '',
+        toolsUsed: '',
+        laborTime: '',
+        done: 'false',
+        payer: ''
+      }
     }
   }
 
   handleChange = (event) => {
     // the event.target of this event will be an input element
     // which will have a `name` attribute (key in the state) & a 'value' (what the user typed)
-    this.setState({ [event.target.name]: event.target.value })
+    const updatedField = { [event.target.name]: event.target.value }
+    this.setState((currentState) => {
+      return {
+        project:
+       { ...currentState.project, ...updatedField }
+      }
+    })
   }
 
   handleSubmit = (event) => {
@@ -64,8 +69,8 @@ class CreateProject extends Component {
               // value={list.name}
               // placeholder='List Name'
               onChange={this.handleChange}
-              name='Project Name'
-              defaultValue={this.state.projectName}
+              name='projectName'
+              defaultValue={this.state.project.projectName}
               placeholder='Project Name'
             />
           </Form.Group>
@@ -74,9 +79,9 @@ class CreateProject extends Component {
             <Form.Control
               required
               onChange={this.handleChange}
-              name='Short Description'
-              defaultValue={this.state.shortDescription}
-              placeholder=''
+              name='shortDescription'
+              defaultValue={this.state.project.shortDescription}
+              placeholder='Something short'
             />
           </Form.Group>
 
@@ -85,9 +90,9 @@ class CreateProject extends Component {
             <Form.Control
               required
               onChange={this.handleChange}
-              name='Tools Used'
-              defaultValue={this.state.toolsUsed}
-              placeholder=''
+              name='toolsUsed'
+              defaultValue={this.state.project.toolsUsed}
+              placeholder='ex: html,css, javaScript, etc'
             />
           </Form.Group>
           <Form.Group>
@@ -95,30 +100,30 @@ class CreateProject extends Component {
             <Form.Control
               required
               onChange={this.handleChange}
-              name='Labor Time'
-              defaultValue={this.state.laborTime}
+              name='laborTime'
+              defaultValue={this.state.project.laborTime}
               placeholder='Labor Time in Hours'
             />
           </Form.Group>
-          {/* <Form.Group>
+          <Form.Group>
             <Form.Label className='text-dark'>Complete</Form.Label>
             <Form.Control
               required
               onChange={this.handleChange}
-              name='Complete'
-              defaultValue={this.state.done}
+              name='complete'
+              defaultValue={this.state.project.done}
               placeholder='true or false'
             />
-          </Form.Group> */}
+          </Form.Group>
 
           <Form.Group>
             <Form.Label className='text-dark'>Payer</Form.Label>
             <Form.Control
               required
               onChange={this.handleChange}
-              name='Payer'
-              defaultValue={this.state.payer}
-              placeholder=''
+              name='payer'
+              defaultValue={this.state.project.payer}
+              placeholder='who payed you?'
             />
           </Form.Group>
           <Button
