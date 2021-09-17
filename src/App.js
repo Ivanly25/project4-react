@@ -10,6 +10,10 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import CreateProject from './components/project/CreateProject'
+import IndexProjects from './components/project/IndexProject'
+import ShowProject from './components/project/ShowProject'
+import UpdateProject from './components/project/UpdateProject'
 
 class App extends Component {
   constructor (props) {
@@ -44,8 +48,8 @@ class App extends Component {
 
     return (
       <Fragment>
-	      <Header user={user} />
-	      {msgAlerts.map((msgAlert) => (
+        <Header user={user} />
+        {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
             key={msgAlert.id}
             heading={msgAlert.heading}
@@ -55,8 +59,8 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-	      <main className='container'>
-	        <Route
+        <main className='container'>
+          <Route
             path='/sign-up'
             render={() => (
               <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
@@ -84,6 +88,35 @@ class App extends Component {
             path='/change-password'
             render={() => (
               <ChangePassword msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/create-projects'
+            render={() => (
+              <CreateProject msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+
+          <AuthenticatedRoute
+            user={user}
+            path='/projects'
+            render={() => <IndexProjects msgAlert={this.msgAlert} user={user} />}
+          />
+
+          <AuthenticatedRoute
+            user={user}
+            path='/project/:id'
+            render={() => (
+              <UpdateProject msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+
+          <AuthenticatedRoute
+            user={user}
+            path='/project/:id'
+            render={() => (
+              <ShowProject msgAlert={this.msgAlert} user={user} />
             )}
           />
         </main>
