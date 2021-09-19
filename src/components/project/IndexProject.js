@@ -22,19 +22,19 @@ class IndexProjects extends Component {
     indexProjects(user)
       .then((res) => {
         console.log(res.data.projects)
-        this.setState({ projects: res.data.projects.project })
+        this.setState({ project: res.data.project.projects })
       })
       .catch(console.error)
   }
 
   // render
   render () {
-    const { project } = this.state
+    const { projects } = this.state
     const { user } = this.props
     // let projectsJsx
     // filter through project and return projects where owner matches user id
-    const filteredProject = project.filter(project => user._id === project.owner)
-    const projectsJsx = filteredProject.map((project) => (
+    const filteredProjects = projects.filter(project => user._id === project.owner)
+    const projectsJsx = filteredProjects.map((project) => (
       <div key='project-cards' className='cards' style='width: 18rem;'>
         <div className='card-body'>
           <h1 className='card-title'>Project Name</h1>

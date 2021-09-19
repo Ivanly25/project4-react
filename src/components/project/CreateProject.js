@@ -16,7 +16,7 @@ class CreateProject extends Component {
         shortDescription: '',
         toolsUsed: '',
         laborTime: '',
-        done: 'false',
+        done: false,
         payer: ''
       }
     }

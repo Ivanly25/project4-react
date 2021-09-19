@@ -92,7 +92,7 @@ class App extends Component {
           />
           <AuthenticatedRoute
             user={user}
-            path='/create-projects'
+            path='/create-project'
             render={() => (
               <CreateProject msgAlert={this.msgAlert} user={user} />
             )}
