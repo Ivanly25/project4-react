@@ -39,7 +39,7 @@ class CreateProject extends Component {
     const { user, msgAlert, history } = this.props
 
     createProject(this.state, user)
-      .then((res) => history.push('/projects/')) // + res.data.project._id
+      .then((res) => history.push('/projects')) // + res.data.project._id
       .then(() =>
         msgAlert({
           heading: 'Project created Successfully',

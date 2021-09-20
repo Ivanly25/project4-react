@@ -1,6 +1,6 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
-import { data } from 'autoprefixer'
+// import { data } from 'autoprefixer'
 
 // create projects request
 export const createProject = (data, user) => {
@@ -19,7 +19,6 @@ export const indexProjects = (user) => {
   return axios({
     url: apiUrl + '/projects',
     method: 'get',
-    data: data,
     headers: {
       Authorization: `Bearer ${user.token}`
     }

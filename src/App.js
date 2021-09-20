@@ -11,7 +11,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateProject from './components/project/CreateProject'
-import IndexProjects from './components/project/IndexProject'
+import IndexProjects from './components/project/IndexProjects'
 import ShowProject from './components/project/ShowProject'
 import UpdateProject from './components/project/UpdateProject'
 
@@ -101,7 +101,9 @@ class App extends Component {
           <AuthenticatedRoute
             user={user}
             path='/projects'
-            render={() => <IndexProjects msgAlert={this.msgAlert} user={user} />}
+            render={() => (
+              <IndexProjects msgAlert={this.msgAlert} user={user} />
+            )}
           />
 
           <AuthenticatedRoute
