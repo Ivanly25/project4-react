@@ -20,57 +20,20 @@ class IndexProjects extends Component {
   componentDidMount = () => {
     // console.log(this.state)
     const { user, msgAlert } = this.props
-    indexProjects(user)
+    // console.log(user)
+    indexProjects(user, user._id)
+      .then(res => {
+        console.log(res)
+        return res
+      })
       .then((res) => {
         // console.log(res.data.project)
         this.setState({ project: res.data.project })
         // console.log(res.data.project)
       })
 
-      .catch(err => msgAlert({ heading: 'INdex failed', message: 'Something went wrong' + err.message, variant: 'danger' }))
+      .catch(err => msgAlert({ heading: 'Index failed', message: 'Something went wrong' + err.message, variant: 'danger' }))
   }
-  // updateProject = (projectId) => {
-  //   const { match, user, msgAlert, history, id } = this.props
-  //   updateProject(id, user)
-  //     .then(() => history.push('/'))
-  //     .then(() => history.push(match.url))
-  //     .then(() =>
-  //       msgAlert({
-  //         heading: 'Project Updated Successfully',
-  //         message: 'Nice work, go check out your Project.',
-  //         variant: 'success'
-  //       })
-  //     )
-  //     .catch((err) => {
-  //       msgAlert({
-  //         heading: 'Project update failed :(',
-  //         message: 'Something went wrong: ' + err.message,
-  //         variant: 'danger'
-  //       })
-  //     })
-  // }
-
-  // deleteProject = (projectId) => {
-  //   const { match, user, msgAlert, history, id } = this.props
-  //   deleteProject(id, user)
-  //     // Redirect to the index of projects
-  //     .then(() => history.push('/'))
-  //     .then(() => history.push(match.url))
-  //     .then(() =>
-  //       msgAlert({
-  //         heading: 'Project Deleted Successfully',
-  //         message: 'Your Project no longer exists',
-  //         variant: 'success'
-  //       })
-  //     )
-  //     .catch((err) =>
-  //       msgAlert({
-  //         heading: 'Failed to Delete Project',
-  //         message: 'Something went wrong: ' + err.message,
-  //         variant: 'danger'
-  //       })
-  //     )
-  // }
 
   // render
   // when idex all projects is clicked on show all projects that are available to that owner

@@ -15,14 +15,14 @@ export const createProject = (data, user) => {
 }
 
 // index of all projects
-export const indexProjects = (user) => {
+export const indexProjects = (user, id) => {
+  console.log(user)
   return axios({
-    url: apiUrl + '/projects',
+    url: apiUrl + '/projects?user=' + user._id,
     method: 'get',
     headers: {
       Authorization: `Bearer ${user.token}`
-    },
-    data: { user }
+    }
   })
 }
 
