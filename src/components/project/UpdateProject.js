@@ -141,15 +141,8 @@ class UpdateProject extends Component {
         </Form>
         <Button
           onClick={() => this.handleDelete}
-          variant='dark'
-          style={{ width: '50%' }}>Delete
-        </Button>
-
-        <Button
           variant='warning'
-          onClick={this.state.done}
-          style={{ width: '100%', marginTop: '1rem' }}>
-          {this.state.done ? 'Completed' : 'Uncompleted'}
+          style={{ width: '100%' }}>Delete
         </Button>
       </>
     )

@@ -73,13 +73,13 @@ class ShowProject extends Component {
       ? (
         <>
           <Link to={`/projects/${match.params.id}/update`}>
-            <Button variant='dark' style={{ width: '100%', display: 'grid' }}>Update
+            <Button variant='warning' style={{ width: '100%', display: 'grid', textDecoration: 'none' }}>-Update-
             </Button>
           </Link>
           <Button
             onClick={this.handleDelete}
             variant='dark'
-            style={{ width: '100%', display: 'grid' }}>Delete
+            style={{ width: '100%', display: 'grid', paddingTop: '15px' }}>-Delete-
           </Button>
         </>
       )
@@ -98,7 +98,7 @@ class ShowProject extends Component {
             <div className='d-flex justify-content-end'>
               <p
                 className='text-center'
-                style={{ margin: 'auto', paddingLeft: '6rem' }}>
+                style={{ margin: 'auto' }}>
                 {`${user.email}'s project:`}
               </p>
             </div>

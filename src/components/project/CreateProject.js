@@ -16,7 +16,7 @@ class CreateProject extends Component {
         shortDescription: '',
         toolsUsed: '',
         laborTime: '',
-        done: false,
+        done: true,
         payer: ''
       }
     }
@@ -37,7 +37,6 @@ class CreateProject extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const { user, msgAlert, history } = this.props
-    // console.log(this.state, user)
     createProject(this.state, user)
       .then((res) => history.push('/projects')) // + res.data.project._id
       .then(() =>

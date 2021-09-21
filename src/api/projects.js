@@ -16,7 +16,6 @@ export const createProject = (data, user) => {
 
 // index of all projects
 export const indexProjects = (user, id) => {
-  console.log(user)
   return axios({
     url: apiUrl + '/projects?user=' + user._id,
     method: 'get',
@@ -28,7 +27,6 @@ export const indexProjects = (user, id) => {
 
 // show one project
 export const showProject = (id, user) => {
-  console.log(id, user)
   return axios({
     url: apiUrl + '/projects/' + id,
     method: 'get',
