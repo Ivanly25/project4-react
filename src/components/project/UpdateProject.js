@@ -42,10 +42,10 @@ class UpdateProject extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
 
-    const { user, msgAlert, history } = this.props
+    const { user, msgAlert, history, match } = this.props
 
-    updateProject(this.state.project, user)
-      .then((res) => history.push('/projects/')) // + res.data.project._id
+    updateProject(this.state.project, match.params.id, user)
+      .then((res) => history.push('/projects')) // + res.data.project._id
       .then(() =>
         msgAlert({
           heading: 'Project updated Successfully',

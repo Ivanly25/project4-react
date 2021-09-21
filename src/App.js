@@ -100,7 +100,7 @@ class App extends Component {
           />
           <AuthenticatedRoute
             user={user}
-            path='/create-project'
+            exact path='/create-project'
             render={() => (
               <CreateProject msgAlert={this.msgAlert} user={user} />
             )}
@@ -108,7 +108,7 @@ class App extends Component {
 
           <AuthenticatedRoute
             user={user}
-            path='/projects'
+            exact path='/projects'
             render={() => (
               <IndexProjects msgAlert={this.msgAlert} user={user} />
             )}
@@ -116,7 +116,7 @@ class App extends Component {
 
           <AuthenticatedRoute
             user={user}
-            path='/projects/:id'
+            exact path='/projects/:id/update'
             render={() => (
               <UpdateProject msgAlert={this.msgAlert} user={user} />
             )}
@@ -124,7 +124,7 @@ class App extends Component {
 
           <AuthenticatedRoute
             user={user}
-            path='/projects/:id'
+            exact path='/projects/:id'
             render={() => <ShowProject msgAlert={this.msgAlert} user={user} />}
           />
         </main>

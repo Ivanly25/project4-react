@@ -7,7 +7,7 @@ export const createProject = (data, user) => {
   return axios({
     url: apiUrl + '/create-project',
     method: 'post',
-    data: data,
+    data: { project: data.project },
     headers: {
       Authorization: `Bearer ${user.token}`
     }
@@ -21,12 +21,14 @@ export const indexProjects = (user) => {
     method: 'get',
     headers: {
       Authorization: `Bearer ${user.token}`
-    }
+    },
+    data: { user }
   })
 }
 
 // show one project
 export const showProject = (id, user) => {
+  console.log(id, user)
   return axios({
     url: apiUrl + '/projects/' + id,
     method: 'get',
@@ -48,13 +50,13 @@ export const deleteProject = (id, user) => {
 }
 
 // edit/update project
-export const updateProject = (projectsData, id, user) => {
+export const updateProject = (data, id, user) => {
   return axios({
     method: 'PATCH',
-    url: apiUrl + `/projects/${id}/`,
+    url: apiUrl + `/projects/${id}`,
+    data: { project: data },
     headers: {
       Authorization: `Bearer ${user.token}`
-    },
-    data: { project: projectsData }
+    }
   })
 }

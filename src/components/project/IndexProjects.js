@@ -29,7 +29,6 @@ class IndexProjects extends Component {
 
       .catch(err => msgAlert({ heading: 'INdex failed', message: 'Something went wrong' + err.message, variant: 'danger' }))
   }
-
   // updateProject = (projectId) => {
   //   const { match, user, msgAlert, history, id } = this.props
   //   updateProject(id, user)
@@ -86,8 +85,8 @@ class IndexProjects extends Component {
       projectsJsx = 'Got no projects, Go Create Some!'
     } else {
       projectsJsx = project.map(project => (
-        <li key={project.id}>
-          <Link to={`/projects/${project.id}`}>
+        <li key={project._id}>
+          <Link to={`/projects/${project._id}`}>
             {project.projectName}
           </Link>
         </li>
