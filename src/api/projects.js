@@ -25,7 +25,7 @@ export const indexProjects = (user) => {
   })
 }
 
-// show one projects
+// show one project
 export const showProject = (id, user) => {
   return axios({
     url: apiUrl + '/projects/' + id,
@@ -36,7 +36,7 @@ export const showProject = (id, user) => {
   })
 }
 
-// delete a projects
+// delete a project
 export const deleteProject = (id, user) => {
   return axios({
     url: apiUrl + '/projects/' + id,
@@ -47,14 +47,14 @@ export const deleteProject = (id, user) => {
   })
 }
 
-// edit/update projects
+// edit/update project
 export const updateProject = (projectsData, id, user) => {
   return axios({
     method: 'PATCH',
-    url: apiUrl + '/projects/' + id,
+    url: apiUrl + `/projects/${id}/`,
     headers: {
       Authorization: `Bearer ${user.token}`
     },
-    data: { projects: projectsData }
+    data: { project: projectsData }
   })
 }

@@ -14,6 +14,7 @@ import CreateProject from './components/project/CreateProject'
 import IndexProjects from './components/project/IndexProjects'
 import ShowProject from './components/project/ShowProject'
 import UpdateProject from './components/project/UpdateProject'
+import Home from './components/Home/Home'
 
 class App extends Component {
   constructor (props) {
@@ -72,6 +73,13 @@ class App extends Component {
               <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
             )}
           />
+          <Route
+            path='/'
+            exact
+            render={() => (
+              <Home msgAlert={this.msgAlert} setUser={this.setUser} />
+            )}
+          />
           <AuthenticatedRoute
             user={user}
             path='/sign-out'
@@ -108,7 +116,7 @@ class App extends Component {
 
           <AuthenticatedRoute
             user={user}
-            path='/project/:id'
+            path='/projects/:id'
             render={() => (
               <UpdateProject msgAlert={this.msgAlert} user={user} />
             )}
@@ -116,10 +124,8 @@ class App extends Component {
 
           <AuthenticatedRoute
             user={user}
-            path='/project/:id'
-            render={() => (
-              <ShowProject msgAlert={this.msgAlert} user={user} />
-            )}
+            path='/projects/:id'
+            render={() => <ShowProject msgAlert={this.msgAlert} user={user} />}
           />
         </main>
       </Fragment>

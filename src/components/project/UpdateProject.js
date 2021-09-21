@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 // import Dropdown from 'react-bootstrap/Dropdown'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { updateProject } from '../../api/projects'
+import { updateProject, showProject } from '../../api/projects'
 
 class UpdateProject extends Component {
   constructor (props) {
@@ -21,6 +21,13 @@ class UpdateProject extends Component {
     }
   }
 
+  componentDidMount () {
+    // one of the automatic router props we get is the match object - that has data about the params in our front-end route url
+    const { match, user, location } = this.props
+    showProject(match.params.id, user, location.projectId)
+      .then((res) => this.setState({ project: res.data.project }))
+  }
+
  handleChange = (event) => {
  // the event.target of this event will be an input element
  // which will have a `name` attribute (key in the state) & a 'value' (what the user typed)
@@ -34,9 +41,10 @@ class UpdateProject extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+
     const { user, msgAlert, history } = this.props
 
-    updateProject(this.state, user)
+    updateProject(this.state.project, user)
       .then((res) => history.push('/projects/')) // + res.data.project._id
       .then(() =>
         msgAlert({
@@ -58,7 +66,7 @@ class UpdateProject extends Component {
     return (
       <>
         <Form onSubmit={this.handleSubmit} className='text-center'>
-          <h3 className='text-dark'>Create New Project Log</h3>
+          <h3 className='text-dark'>Update Project Log</h3>
           <Form.Group controlId='projectName'>
             <Form.Label className='text-dark'>Project name</Form.Label>
             <Form.Control
@@ -131,6 +139,18 @@ class UpdateProject extends Component {
             style={{ width: '100%' }}>Submit
           </Button>
         </Form>
+        <Button
+          onClick={() => this.handleDelete}
+          variant='dark'
+          style={{ width: '50%' }}>Delete
+        </Button>
+
+        <Button
+          variant='warning'
+          onClick={this.state.done}
+          style={{ width: '100%', marginTop: '1rem' }}>
+          {this.state.done ? 'Completed' : 'Uncompleted'}
+        </Button>
       </>
     )
   }
